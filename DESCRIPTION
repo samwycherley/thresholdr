@@ -1,0 +1,22 @@
+Package: thresholdr
+Title: thresholdr: Stability Tools for Threshold Vector Autoregressive Models in R
+Version: 0.1.0
+Authors@R: 
+    person(given = "Sam",
+           family = "Wycherley",
+           role = c("aut", "cre"),
+           email = "samvpwycherley at gmail.com")
+Description: This package provides a wrapper for the 'Julia' package 'ThresholdStability.jl', 
+    available at <https://github.com/samwycherley/ThresholdStability.jl>, which provides methods for determining the stability of
+    threshold vector autoregressive models, and for putting CKSVAR models into threshold vector autoregressive form.
+License: MIT | file LICENSE
+URL: https://github.com/samwycherley/thresholdr
+Depends: R (>= 3.4.0)
+Encoding: UTF-8
+LazyData: true
+SystemRequirements: Julia (>=1.0), ThresholdStability.jl
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1.9001
+Imports:
+    JuliaCall,
+    network
