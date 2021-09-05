@@ -117,6 +117,6 @@ threshold_setup <- function(pkg_check=TRUE,...) {
     }
   }
 
-  th2$sosbound_gamma <- function (s, d) th$sosbound_gamma(s, as.integer(d))
+  th2$sosbound_gamma <- function(s, d) th$sosbound_gamma(s, as.integer(d))
   th2
 }
