@@ -1,4 +1,7 @@
 # thresholdr
+
+[![R-CMD-check](https://github.com/samwycherley/thresholdr/workflows/R-CMD-check/badge.svg)](https://github.com/samwycherley/thresholdr/actions)  
+
 thresholdr is an R package providing a convenient wrapper for [ThresholdStability.jl](https://github.com/samwycherley/ThresholdStability.jl), a Julia package providing tools to determine the stability of threshold vector autoregressive models.
 
 ## Installation
