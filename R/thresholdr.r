@@ -76,27 +76,28 @@ threshold_setup <- function(pkg_check=TRUE,...) {
   }
 
   th2$automaton_r_to_jl <- function(net) {
-    G <- julia_automaton_init(get.network.attribute(net, "n"))
+    G <- th2$LightAutomaton(get.network.attribute(net, "n"))
     L <- get.network.attribute(net, "label")
     for (i in 1:get.network.attribute(net, "n")) {
       for (j in 1:get.network.attribute(net, "n")) {
-        if (is.adjacent(net, i, j)) julia_add_transition(G, i, j, L[i, j])
+        if (is.adjacent(net, i, j)) th2$add_transition(G, i, j, L[i, j])
       }
     }
     G
   }
 
   th2$get.labels <- function(net) get.network.attribute(net, "label")
+  th2$get.label <- function(net, i, j) th2$get.labels(net)[i, j]
 
   th2$automaton_jl_to_r <- function(G) {
     n <- th$nstates(G)
-    net <- lightautomaton(n)
+    net <- th2$lightautomaton(n)
     if (th$islight(G)) {
       for (i in 1:n) {
         for (j in 1:n) {
           if (th$has_transition(G, i, j)) {
             label <- th$event(G, i, j)
-            net <- addr_transition(net, i, j, label)
+            net <- th2$addr_transition(net, i, j, label)
           }
         }
       }
@@ -106,10 +107,10 @@ threshold_setup <- function(pkg_check=TRUE,...) {
     net
   }
 
-  automaton_constructor <- function(A, need_return="Julia") {
+  th2$automaton_constructor <- function(A, need_return="Julia") {
     if (need_return == "R") {
       G <- th$automaton_constructor(A)
-      net <- automaton_jl_to_r(G)
+      net <- th2$automaton_jl_to_r(G)
       net
     } else {
       G <- th$automaton_constructor(A)
