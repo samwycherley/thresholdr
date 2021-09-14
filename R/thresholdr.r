@@ -108,14 +108,26 @@ threshold_setup <- function(pkg_check=TRUE,...) {
   }
 
   th2$automaton_constructor <- function(A, need_return="Julia") {
+    julia$assign("B", A)
+    B <- julia$eval("Vector{Array{Float64, 2}}(B)")
     if (need_return == "R") {
-      G <- th$automaton_constructor(A)
+      G <- th$automaton_constructor(B)
       net <- th2$automaton_jl_to_r(G)
       net
     } else {
-      G <- th$automaton_constructor(A)
+      G <- th$automaton_constructor(B)
       G
     }
+  }
+
+  th2$discreteswitchedsystem <- function(A, G, X) {
+    julia$assign("A", A)
+    julia$eval("A = Vector{Array{Float64, 2}}(A)")
+    julia$assign("G", G)
+    julia$assign("X", X)
+    julia$eval("X = Vector{Array{Array{Float64, 2}}}(X)")
+    s <- julia$eval("discreteswitchedsystem(A, G, X)")
+    s
   }
 
   th2$sosbound_gamma <- function(s, d) th$sosbound_gamma(s, as.integer(d))
