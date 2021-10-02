@@ -26,7 +26,7 @@ Much like other R wrappers for Julia packages, such as [diffeqr](https://github.
 
 Some important exceptions:
 - functions are prefaced with `th$`.
-- those functions that end in `!` in Julia, such as `add_transition!` (standard syntax in Julia for functions that modify an object in-place.) In thresholdr, these are renamed without the `!`,so `add_transition!` becomes `add_transition`. 
+- those functions that end in `!` in Julia, such as `add_transition!` (standard syntax in Julia for functions that modify an object in-place.) In thresholdr, these are renamed without the `!`, so `add_transition!` becomes `add_transition`. 
 - those functions featuring Greek letters in ThresholdStability.jl: `sdp_γ` and `sos_γ`. ThresholdStability.jl includes aliases `sdp_gamma` and `sos_gamma` for these functions, which can be called from thresholdr.
 - `CKSVAR_to_TAR` is split into two functions: `CKSVAR_to_TAR` which returns the set of matrices `Σ` and `CKSVAR_to_TAR_st_space` which returns the set of state space constraint matrices `X`.
 - `discreteswitchedsystem` now requires all three arguments (set of matrices `Σ`, automaton `G`, state space constraint set `X`.)
