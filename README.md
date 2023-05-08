@@ -76,10 +76,10 @@ While [HybridSystems.jl](https://github.com/blegat/HybridSystems.jl) automata fr
 In the R representation, transitions are tracked by an adjacency matrix and labels are tracked similarly via a network attribute.
 
 ```r
-G <- th$LightAutomaton(4)  # create a Julia LightAutomaton `G` with 4 nodes
-net <- th$lightautomaton(4)  # create an R representation of an automaton, `net`, with 4 nodes. 
+G <- th$GraphAutomaton(4)  # create a Julia GraphAutomaton `G` with 4 nodes
+net <- th$graphautomaton(4)  # create an R representation of an automaton, `net`, with 4 nodes. 
 
-G <- th$add_transition(G, 1, 2, 1)  # add transition 1 -> 2 with label 1 to the LightAutomaton
+G <- th$add_transition(G, 1, 2, 1)  # add transition 1 -> 2 with label 1 to the GraphAutomaton
 net <- th$addr_transition(G, 1, 2, 1)  # same but for the R automaton
 th$get.labels(net)  # retrieve labels for the R automaton
 
