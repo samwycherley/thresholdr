@@ -57,11 +57,11 @@ threshold_setup <- function(pkg_check=TRUE,...) {
     th$CKSVAR_to_companionFD(F, Fstar, beta_tilde, as.integer(nlags),...)
   }
 
-  th2$LightAutomaton <- function(nstates) {
-    th$LightAutomaton(as.integer(nstates))
+  th2$GraphAutomaton <- function(nstates) {
+    th$GraphAutomaton(as.integer(nstates))
   }
 
-  th2$lightautomaton <- function(nstates) {
+  th2$graphautomaton <- function(nstates) {
     net <- network.initialize(nstates, loops = TRUE)
     net %n% "label" <- matrix(rep(NA, nstates^2), nstates, nstates)
     net
@@ -76,7 +76,7 @@ threshold_setup <- function(pkg_check=TRUE,...) {
   }
 
   th2$automaton_r_to_jl <- function(net) {
-    G <- th2$LightAutomaton(get.network.attribute(net, "n"))
+    G <- th2$GraphAutomaton(get.network.attribute(net, "n"))
     L <- get.network.attribute(net, "label")
     for (i in 1:get.network.attribute(net, "n")) {
       for (j in 1:get.network.attribute(net, "n")) {
@@ -91,8 +91,8 @@ threshold_setup <- function(pkg_check=TRUE,...) {
 
   th2$automaton_jl_to_r <- function(G) {
     n <- th$nstates(G)
-    net <- th2$lightautomaton(n)
-    if (th$islight(G)) {
+    net <- th2$graphautomaton(n)
+    if (th$isgraphautomaton(G)) {
       for (i in 1:n) {
         for (j in 1:n) {
           if (th$has_transition(G, i, j)) {
