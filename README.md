@@ -33,7 +33,7 @@ Some important exceptions:
 
 Functions can return either an R object or a Julia object, and this can be specified by including `need_return="R"` or `need_return="Julia"` as an argument in thresholdr functions. Some Julia objects, such as automata or hybrid systems, cannot be converted to R objects automatically.
 
-To convert a CKSVAR model and calculate theJSR, CJSR or SCJSR, we might run something like the following:
+To convert a CKSVAR model and calculate the JSR, CJSR or SCJSR, we might run something like the following:
 ```r
 C =...  # some appropriately sized matrix(c(...), nc, nr)
 Cstar = ...  # "
